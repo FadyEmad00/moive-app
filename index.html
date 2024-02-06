@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="icon" href="/imgs/logo.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Movie App</title>
+  </head>
+  <body>
+    <!-- Loading screen  -->
+    <div class="loading">
+      <span class="spinner-grow text-light" role="status"></span>
+    </div>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-to-top" onclick="handleScrollTop()">
+      <i class="fa-solid fa-arrow-up-long"></i>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="slide-nav d-flex text-light">
+      <div
+        class="slide-nav-left d-flex flex-column justify-content-between p-3"
+      >
+        <div class="links">
+          <ul class="overflow-hidden">
+            <li
+              onclick="getNowPlaying()"
+              class="py-2 position-relative c-pointer"
+            >
+              Now Playing
+            </li>
+            <li onclick="getPopuler()" class="py-2 position-relative c-pointer">
+              Popular
+            </li>
+            <li
+              onclick="getTopRated()"
+              class="py-2 position-relative c-pointer"
+            >
+              Top Rated
+            </li>
+            <li
+              onclick="getTrending()"
+              class="py-2 position-relative c-pointer"
+            >
+              Trending
+            </li>
+
+            <li
+              onclick="getUpcoming()"
+              class="py-2 position-relative c-pointer"
+            >
+              Upcoming
+            </li>
+            <li class="py-2 position-relative c-pointer">
+              <a href="#contact" class="text-white" onclick="closeNavbar()"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-footer">
+          <div class="d-flex w-100 gap-3 py-2 justify-content-center">
+            <i class="fa-brands fa-facebook c-pointer"></i>
+            <i class="fa-brands fa-twitter c-pointer"></i>
+            <i class="fa-solid fa-globe c-pointer"></i>
+          </div>
+          <div class="footer">
+            <p>Copyright Â© 2019 All Rights <br />Reserved.</p>
+            <br />
+
+            Created by
+            <a
+              href="https://github.com/FadyEmad00"
+              target="_blank"
+              class="link-danger fw-bold"
+              >Fady Emad</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-header text-center">
+        <img class="logo p-3" src="imgs/logo.png" alt="logo" />
+        <span id="toggleNav" class="c-pointer">
+          <i class="fa-solid fa-align-justify"></i>
+        </span>
+        <div class="d-flex flex-column mb-5">
+          <i class="fa-solid fa-globe d-block c-pointer"></i>
+          <i class="fa-solid fa-share-nodes"></i>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home section -->
+    <section class="home p-5">
+      <div class="container">
+        <!-- search-box -->
+        <div class="search-box text-center">
+          <input
+            class="rounded-pill"
+            oninput="handleSearch(this.value)"
+            type="text"
+            placeholder="search"
+          />
+        </div>
+
+        <!-- data -->
+        <div class="data row g-4 mt-3 text-white"></div>
+
+        <section class="text-white py-5 contact" id="contact">
+          <h1>Contact US</h1>
+
+          <form>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  maxlength="37"
+                  placeholder="Enter Your Name"
+                  class="mt-4"
+                  oninput="handleNameVaildation(this.value)"
+                />
+                <p class="error text-danger px-2" id="error-name">
+                  Invalid Name , only Characters are allowed
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  class="mt-4"
+                  oninput="handleEmail(this.value)"
+                  placeholder="Enter Your Email"
+                />
+                <p class="error text-danger px-2" id="error-email">
+                  Invalid Email , try example@domain.com
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <input
+                  id="phone"
+                  type="number"
+                  required
+                  class="mt-4"
+                  placeholder="Enter Your Phone"
+                  oninput="handlePhone(this.value)"
+                />
+                <p class="error text-danger px-2" id="error-phone">
+                  Invalid Phone Number
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <input
+                  id="age"
+                  type="number"
+                  required
+                  class="mt-4"
+                  placeholder="Enter Your Age"
+                  oninput="handleAge(this.value)"
+                />
+
+                <p class="error text-danger px-2" id="error-age">
+                  Your age must be over 16+
+                </p>
+              </div>
+
+              <div class="col-md-6 position-relative">
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  class="mt-4 position-relative"
+                  oninput="handlePassword(this.value)"
+                  placeholder="Enter Your Password"
+                />
+                <p
+                  class="error text-danger px-2 position-absolute bottom-5"
+                  id="error-password"
+                >
+                  password must contain numbers & letters at least 8 character
+                </p>
+                <span class="show-password"
+                  ><i class="fa-solid fa-eye-slash"></i
+                ></span>
+              </div>
+
+              <div class="col-md-6 position-relative">
+                <input
+                  id="repassword"
+                  type="password"
+                  required
+                  placeholder="Reenter password"
+                  class="mt-4"
+                  oninput="handleRepassword(this.value)"
+                />
+                <p
+                  class="error text-danger px-2 position-absolute bottom-5"
+                  id="error-repassword"
+                >
+                  Password not match
+                </p>
+              </div>
+
+              <div class="col-md-12 mt-5">
+                <button type="submit" id="btn-submit" class="btn btn-dark">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

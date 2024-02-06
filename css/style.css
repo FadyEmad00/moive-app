@@ -1,0 +1,275 @@
+
+input {
+    border: none;
+    outline: none;
+    background-color: transparent !important;
+}
+
+a{
+    text-decoration: none !important;
+    color: #fff;
+}
+
+ul {
+    list-style: none;
+}
+
+.c-pointer{
+    cursor: pointer;
+}
+
+body{
+    background-color: #0D0D0D !important;
+    position: relative;
+}
+
+.loading{
+    min-height: 100vh; 
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    z-index: 9999;
+    display: none;
+}
+
+.scroll-to-top {
+    position: fixed;
+    background-color: #000;
+    color: #ccc;
+    height: 40px;
+    width: 40px;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    
+    transition: all 0.7s;
+}
+
+/* navbar */
+.slide-nav{
+    position: fixed;
+    top: 0;
+    min-height: 100vh;
+    z-index: 99999;
+    left: -235px;
+    background-color: #0D0D0D;
+    transition: 0.5s;
+}
+
+#toggleNav {
+    font-size: 22px;
+}
+
+.slide-nav-left{
+    min-height: 100vh;
+}
+
+.nav-header{
+    color: #0D0D0D;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+}
+
+.nav-header > svg {
+    cursor: pointer;
+}
+.links  li {
+    transition: 0.5s;
+}
+
+.links  li:hover,
+.links  li a:hover  {
+    color: #ff655c!important;
+}
+
+.footer p {
+    margin: 0;
+}
+
+/*  */
+.search-box input{
+    width: 50%;
+    transition: all 0.5s;
+    border: 2px solid #F8F6F6;
+    padding: 6px 18px;
+    color: #fff;
+}
+.movie-img img{
+    transition: 0.7s;
+}
+
+.movie-img{
+   position: relative;
+    z-index: 99;
+}
+
+.movie-img:hover img{
+    filter: blur(5px);
+    scale: 1.3;
+    rotate: 10deg;
+    opacity: 0.5;
+}
+
+.movie{
+    position: relative;
+    overflow: hidden;
+}
+
+.movie .overlay-details {
+    position: absolute;
+    width: 95%;
+    height: max-content;
+    top: 0;
+    left: 0;
+    padding: 30px 40px;
+    display: none;
+}
+
+.overlay-details .movie-name{
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    animation: fromTop 1s ease;
+}
+
+
+.overlay-details .movie-desc{
+    max-height: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    animation: overviewAnimation 1s ease;
+}
+
+.overlay-details .release-data{
+    animation: slideToTop 0.7s ease ;
+}
+
+.overlay-details .rate{
+    animation: slideToTop 1s ease ;
+}
+
+.overlay-details .vote{
+    animation: slideToTop 1.5s ease ;
+}
+
+.overlay-details .vote {
+    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid green;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.movie-img:hover ~ .overlay-details {
+    display: block;
+}
+
+/* contact-us */
+.contact form input {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    color: #fff;
+}
+
+.contact #password{
+    position: relative;
+}
+.contact #password:focus ~ .show-password,
+.contact #password:valid ~ .show-password{
+    opacity: 1;
+    bottom: 10px;
+}
+
+.show-password {
+    position: absolute;
+    bottom: -10px;
+    right: 20px;
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.error{
+    display: none;
+}
+
+@keyframes fromTop {
+    0%{
+        transform: translateY(-100px);
+    } 
+    100%{
+        transform: translateY(0);
+    }
+}
+
+
+
+@keyframes overviewAnimation {
+    0%{
+        transform: perspective(400px) rotateX(90deg);
+        opacity: 0;
+    }
+    40%{
+        transform: perspective(400px) rotateX(-20deg);
+    }
+    60%{
+        transform: perspective(400px) rotateX(10deg);
+        opacity: 1;
+    }
+    
+}
+
+@keyframes slideToTop {
+    0%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateZ(0);
+    }
+
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate3d(-10px,0,0);
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 991px){
+    .search-box input {
+        width: 75%!important;
+    }
+    .nav-header {
+        background-color: transparent !important;
+    }
+    .slide-nav .logo {
+        visibility: hidden;
+    }
+    #toggleNav{
+        color: #fff !important;
+    }
+}
